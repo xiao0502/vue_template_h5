@@ -1,0 +1,71 @@
+/**
+ *  整个项目的less函数制定各种功能
+ */
+
+// 色彩规范
+
+
+// 字体规范
+
+
+/**
+ * @2x@3x
+ * @param name 图片名称
+ * @param width 图片宽度
+ * @param height 图片高度
+ */
+.bg-image(@name,@width,@height) {
+    height: @height;
+    width: @width;
+    background-image: url('../../common/imgs/@{name}@2x.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+        background-image: url('../../common/imgs/@{name}@3x.png');
+        background-position: center;
+        background-repeat: no-repeat
+    }
+}
+
+/**
+ * 伪类扩展点击区域
+ * @param position 定位类型
+ */
+.extend-click(@position) {
+    position: @position;
+    &:before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+    }
+}
+
+// css3右箭头
+.arrow-right() {
+    &:after {
+        content: " ";
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        border-width: 1px 1px 0 0;
+        border-color: #C8C8CD;
+        border-style: solid;
+        -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+        transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+        position: absolute;
+    }
+}
+
+/**
+ * 点击触发颜色改变
+ * @param activeColor 点击时的交互色
+ */
+.active(@activeColor) {
+    &:active {
+        //background-color: #000;
+    }
+}
