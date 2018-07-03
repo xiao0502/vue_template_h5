@@ -6,6 +6,9 @@ Vue.use(Router)
 // home
 const Home = () => import('../views/home/home.vue');
 
+
+const HomeSkeleton = () => import('../skeleton/homeSkeleton.vue')
+
 export default new Router({
     routes: [
         {
@@ -15,6 +18,11 @@ export default new Router({
             meta: {
                 requiresAuth: true
             }
+        },
+        {
+            path: '/homeSkeleton',
+            name: 'home',
+            component: HomeSkeleton
         }
     ]
 })

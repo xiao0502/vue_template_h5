@@ -33,6 +33,20 @@
             title="姓名"
             placeholder="请输入"
             v-model="val"></x-input>
+        <div class="title">过滤器</div>
+        <x-button
+            mini
+            @click.native="getData"
+        >请求数据
+        </x-button>
+        <ul>
+            <li
+                class="linkItem"
+                :key="index"
+                v-for="(item,index) in bannerList">
+                {{item.linkUrl}}
+            </li>
+        </ul>
     </div>
 
 </template>
@@ -42,13 +56,15 @@
         XButton,
         XInput
     } from 'vux'
+    import API from 'assets/js/api'
 
     export default {
         name: "home",
         data() {
             return {
                 name: 'home',
-                val: ''
+                val: '',
+                bannerList: []
             }
         },
         methods: {
@@ -66,6 +82,17 @@
                 setTimeout(() => {
                     this.$hideLoading()
                 }, 2000)
+            },
+            getData() {
+                this.$get(API.bannerList)
+                    .then(res => {
+                        // console.log(res);
+                        if(res.code === this.$CODE) {
+                            // console.log(res);
+                            this.bannerList = [...res.data.bannerList]
+                            console.log(this.bannerList);
+                        }
+                    })
             }
         },
         components: {
@@ -91,5 +118,11 @@
     .btnList {
         display: flex;
         align-items: flex-end;
+    }
+    .linkItem {
+        width: 100%;
+        list-style: none;
+        padding: 10px;
+        word-break: break-all;
     }
 </style>

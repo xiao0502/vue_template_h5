@@ -1,8 +1,8 @@
 import axios from 'axios'
 import qs from 'qs'
-import api from 'api'
+import API from './api'
 
-axios.defaults.baseURL = api.baseUrl
+axios.defaults.baseURL = API.baseUrl
 
 // 拦截请求
 axios.interceptors.request.use(
@@ -100,5 +100,6 @@ export default {
                     })
             })
         }
+        Vue.prototype.$CODE = 0;
     }
 }
