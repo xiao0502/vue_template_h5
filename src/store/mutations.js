@@ -8,6 +8,9 @@ const mutations = {
     [types.LOGIN_OUT](state) {
         state.token = null;
         window.localStorage.removeItem('token');
+    },
+    [types.SET_LOADING](state, loadingFlag) {
+        state.isLoading = loadingFlag;
     }
 }
 

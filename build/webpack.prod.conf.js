@@ -118,20 +118,20 @@ const webpackConfig = merge(baseWebpackConfig, {
             }
         ]),
         // inject skeleton content(DOM & CSS) into HTML
-        new SkeletonWebpackPlugin({
-            webpackConfig: require('./webpack.skeleton.conf'),
-            quiet: true,
-            minimize: true,
-            router: {
-                mode: 'hash',
-                routes: [
-                    {
-                        path: '*',
-                        skeletonId: 'home'
-                    }
-                ]
-            }
-        }),
+        // new SkeletonWebpackPlugin({
+        //     webpackConfig: require('./webpack.skeleton.conf'),
+        //     quiet: true,
+        //     minimize: true,
+        //     router: {
+        //         mode: 'history',
+        //         routes: [
+        //             {
+        //                 path: '*',
+        //                 skeletonId: 'home'
+        //             }
+        //         ]
+        //     }
+        // }),
     ]
 })
 

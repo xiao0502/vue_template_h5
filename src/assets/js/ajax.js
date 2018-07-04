@@ -1,6 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import API from './api'
+import store from 'store'
 
 axios.defaults.baseURL = API.baseUrl
 
@@ -8,6 +9,13 @@ axios.defaults.baseURL = API.baseUrl
 axios.interceptors.request.use(
     config => {
         // 处理各种请求
+        // let loadingFlag = false;
+        // if (!loadingFlag) {
+        //     store.commit('SET_LOADING', true)
+        // }else {
+        //
+        // }
+        store.commit('SET_LOADING', true)
         return config;
     },
     err => {
@@ -19,6 +27,10 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
     res => {
         // 处理何种响应
+        // 延迟展示自定义loading
+        setTimeout(() => {
+            store.commit('SET_LOADING', false)
+        },1000)
         return res;
     },
     err => {
@@ -30,7 +42,7 @@ axios.interceptors.response.use(
 )
 
 /**
- * 统一处理请求成功
+ * 统一处理请求失败
  * @param res
  * @returns {*}
  */

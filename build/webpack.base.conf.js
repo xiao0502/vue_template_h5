@@ -30,6 +30,7 @@ const oldBaseConf = {
             'assets': resolve('src/assets'),
             'router': resolve('src/router'),
             'store': resolve('src/store'),
+            'components': resolve('src/components'),
         }
     },
     module: {
