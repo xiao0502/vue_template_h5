@@ -147,11 +147,7 @@
         color: teal
     }
     .home-wrapper {
-        position: absolute;
-        top: 15px;
-        bottom: 15px;
-        left: 15px;
-        right: 15px;
+        padding: 15px;
     }
     .title {
         font-weight: bold;

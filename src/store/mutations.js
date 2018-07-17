@@ -11,7 +11,10 @@ const mutations = {
     },
     [types.SET_LOADING](state, loadingFlag) {
         state.isLoading = loadingFlag;
-    }
+    },
+    [types.UPDATE_DIRECTION](state,payload) {
+        state.direction = payload.direction
+    },
 }
 
 export default mutations;

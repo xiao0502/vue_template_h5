@@ -1,17 +1,14 @@
 <template>
     <div class="flatlist-wrapper">
-        <div class="scroll-wrapper">
-            <scroll ref="scroll"
-                    :data="items"
-                    :pullDownRefresh="pullDownRefreshObj"
-                    :pullUpLoad="pullUpLoadObj"
-                    @pullingDown="onPullingDown"
-                    @pullingUp="onPullingUp"
-                    @click="clickItem"
-            >
-            </scroll>
-        </div>
-
+        <scroll ref="scroll"
+                :data="items"
+                :pullDownRefresh="pullDownRefreshObj"
+                :pullUpLoad="pullUpLoadObj"
+                @pullingDown="onPullingDown"
+                @pullingUp="onPullingUp"
+                @click="clickItem"
+        >
+        </scroll>
     </div>
 </template>
 
@@ -121,31 +118,13 @@
 
 <style lang="less">
     .flatlist-wrapper {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #dcdcdc;
-
-        .scroll-wrapper {
-            position: absolute;
-            top: 15px;
-            bottom: 150px;
-            left: 15px;
-            right: 15px;
-            border-radius: 10px;
+        .list-wrapper {
+            height: 100%;
             overflow: hidden;
-            box-shadow: 0 0 5px rgba(0,0,0,.2);
-            .list-wrapper {
-                border-radius: 10px;
-                overflow: hidden;
-            }
-            .list-item {
-                text-align: center;
-                padding-left: 0!important;
-            }
         }
-
+        .list-item {
+            text-align: center;
+            padding-left: 0 !important;
+        }
     }
 </style>

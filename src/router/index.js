@@ -14,21 +14,34 @@ export default new Router({
     routes: [
         {
             path: '/',
+            redirect:'/home',
+
+        },
+        {
+            path: '/home',
             name: 'home',
             component: Home,
             meta: {
-                requiresAuth: true
+                requiresAuth: true,
+                title: '首页'
             }
         },
         {
             path: '/flatlist',
             name: 'flatlist',
-            component: FlatList
+            component: FlatList,
+            meta: {
+                title: '列表'
+            }
         },
         {
             path: '/homeSkeleton',
             name: 'homeSkeleton',
             component: HomeSkeleton
         }
-    ]
+    ],
+    mode: 'history',
+    scrollBehavior () {
+        return { x: 0, y: 0 }
+    },
 })
