@@ -8,10 +8,11 @@ import routerIntercept from 'assets/js/routerIntercept' // 全局路由拦截处
 import store from 'store' // 全局状态管理
 import ajax from 'assets/js/ajax' // 封装ajax
 import dbClick from 'assets/js/dbClick' // 防止多次连续点击指令
-import { TransferDom } from 'vux'
-import FastClick from 'assets/js/fastclick'
-
-
+import {TransferDom} from 'vux'
+import FastClick from 'assets/js/fastclick' //  解决点击延迟
+/*引入移动端手势库*/
+import directives from './directives/touch'
+directives(Vue);
 
 
 Vue.directive('transfer-dom', TransferDom)
@@ -22,6 +23,7 @@ Vue.use(dbClick)
 FastClick.attach(document.body)
 
 Vue.config.productionTip = false
+
 
 /* eslint-disable no-new */
 new Vue({
