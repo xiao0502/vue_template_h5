@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <router-view/>
+
         <loading
             :isLoading="$store.state.isLoading"
         ></loading>

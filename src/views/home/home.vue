@@ -67,6 +67,15 @@
                         点击按钮加载轮播
                     </div>
                 </swiper>
+                <div class="title">kepp-alive</div>
+                <div>
+                    <x-button
+                    mini
+                    v-dbClick
+                    @click.native="toKeepAlive">
+                    请求轮播图
+                    </x-button>
+                </div>
             </div>
         </scroll>
     </div>
@@ -112,13 +121,11 @@
                     this.$hideLoading()
                 }, 2000)
             },
-            getData() {
-                this.$get(API.bannerList)
-                    .then(res => {
-                        if (res.code === this.$CODE) {
-                            this.bannerList = [...res.data.bannerList]
-                        }
-                    })
+            async getData() {
+                const res = await this.$get(API.bannerList);
+                if (res.code === this.$CODE) {
+                    this.bannerList = [...res.data.bannerList]
+                }
             },
             toFlatList() {
                 this.$router.push({
@@ -130,6 +137,11 @@
                     this.$refs.scroll.forceUpdate()
                 }, 1000)
 
+            },
+            toKeepAlive() {
+                this.$router.push({
+                    name: 'keepalivepage1'
+                })
             }
         },
         components: {
@@ -143,9 +155,11 @@
 
 <style scoped lang="less">
     @import "../../assets/css/mixin.less";
+
     div {
         color: teal
     }
+
     .home-wrapper {
         position: absolute;
         top: 15px;
@@ -153,6 +167,7 @@
         left: 15px;
         right: 15px;
     }
+
     .title {
         font-weight: bold;
         margin-bottom: 10px;
@@ -194,13 +209,16 @@
     .swiper-demo-img {
         height: inherit;
     }
+
     .link {
         color: #000;
         font-size: 14px;
     }
+
     .vux-x-input:before {
         display: none;
     }
+
     .dpr-img {
         .bg-image(icon-noData, 50px, 50px)
     }
